@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>円の編み図・増やし目計算ツール</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>円の編み図・増やし目計算ツール</h1>
+      <p class="subtitle">段数を入力すると、増やし目の手順と合計目数を自動計算します</p>
+    </header>
+
+    <main>
+      <section class="control-panel">
+        <div class="input-group">
+          <label for="row-input">編みたい段数（1〜50段）</label>
+          <div class="number-input-wrapper">
+            <button type="button" id="dec-btn" aria-label="1段減らす">-</button>
+            <input type="number" id="row-input" value="6" min="1" max="50">
+            <button type="button" id="inc-btn" aria-label="1段増やす">+</button>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="base-stitches">1段目の目数（わの作り目）</label>
+          <select id="base-stitches">
+            <option value="5">5目</option>
+            <option value="6" selected>6目（標準）</option>
+            <option value="7">7目</option>
+            <option value="8">8目</option>
+          </select>
+        </div>
+
+        <div class="input-group checkbox-group">
+          <label class="checkbox-label">
+            <input type="checkbox" id="stagger-check" checked>
+            <span>偶数段の増やし目を分散させる（きれいな円にする）</span>
+          </label>
+        </div>
+      </section>
+
+      <section class="target-summary" id="target-summary">
+        <!-- JSで選択段のハイライトを表示 -->
+      </section>
+
+      <section class="table-section">
+        <div class="table-header-row">
+          <h2>1段目からの編み方一覧</h2>
+          <button type="button" id="reset-checks-btn" class="secondary-btn">チェックをリセット</button>
+        </div>
+        <div class="table-wrapper">
+          <table>
+            <thead>
+              <tr>
+                <th class="col-check">済</th>
+                <th class="col-row">段数</th>
+                <th class="col-pattern">1周の編み方（繰り返しパターン）</th>
+                <th class="col-total">合計目数</th>
+              </tr>
+            </thead>
+            <tbody id="pattern-tbody">
+              <!-- JSで各段の行を生成 -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
